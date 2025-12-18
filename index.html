@@ -1,1 +1,457 @@
-reserved
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magnus Cyberdeck - AI Code Editor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      font-weight: 600;
+      text-shadow: 0 0px 2px hsl(33.23deg 67.98% 70.96%);
+      line-height: 1.3em;
+    }
+    body {
+      background-color: #272A36;
+      color: #F5F3F1;
+      background: linear-gradient(to top, #272a36, #1c1f2b, #272a36, #3b4159);
+      background-size: cover;
+      background-size: 100% 3px;
+    }
+    main {
+      width: 100%;
+      padding: 20px;
+      max-width: 820px;
+    }
+    .ln {
+      color: #FFCC00;
+      display: inline-block;
+      width: 50px;
+    }
+    .command {
+      color: #68ff99;
+    }
+    .keyword {
+      color: #00FFFF;
+    }
+    .string {
+      color: #FFA500;
+    }
+    .prompt {
+      display: grid;
+      grid-template-columns: auto auto 1fr;
+      column-gap: 7px;
+      padding-top: 10px;
+    }
+    input {
+      background-color: transparent;
+      color: #F5F3F1;
+      border: none;
+    }
+    input:focus {
+      outline: none;
+    }
+    .sectionTitle {
+      color: gold;
+      font-size: 18px;
+      padding-bottom: 5px;
+    }
+    .info {
+      font-size: 11px;
+      font-weight: normal;
+      color: #868da7;
+      text-shadow: none;
+    }
+    .title {
+      color: #eeb7eb;
+    }
+    .error {
+      color: #ff8383;
+    }
+    .common {
+      margin-bottom: 8px;
+    }
+    .hidden {
+      display: none;
+    }
+    a {
+      font: inherit;
+      color: inherit;
+      text-decoration: none;
+    }
+    u {
+      cursor: pointer;
+    }
+    .download-btn {
+      color: #68ff99;
+      font-weight: bold;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    @media (max-width: 600px) {
+      * {
+        font-size: 13px;
+      }
+      main {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main id="cmdcont">
+    <section id="terminal">
+      <div class="command"><span class="ln" style="font-weight: normal; color: white">******</span> <span class="error" id="date"></span></div>
+      <div class="title"><span class="ln" style="font-weight: normal; color: white">******</span> MAGNUS-SYS.(v1.0-beta) - Win64<br><span class="ln" style="font-weight: normal; color: white">******</span> <span class="string">00001 00404 Scroll ==> CSR</span></div><br>
+      <pre style="color: white;">
+███╗   ███╗ █████╗  ██████╗ ███╗   ██╗██╗   ██╗███████╗
+████╗ ████║██╔══██╗██╔════╝ ████╗  ██║██║   ██║██╔════╝
+██╔████╔██║███████║██║  ███╗██╔██╗ ██║██║   ██║███████╗
+██║╚██╔╝██║██╔══██║██║   ██║██║╚██╗██║██║   ██║╚════██║
+██║ ╚═╝ ██║██║  ██║╚██████╔╝██║ ╚████║╚██████╔╝███████║
+╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝ ╚══════╝
+                 CYBERDECK v1.0-beta
+      </pre><br>
+      <span class="ln">000001</span> <span class="keyword">>> AI-Powered Code Editor for Windows //</span><br>
+      <span class="ln">000002</span> <span class="command">// System Online //</span><br>
+      <span class="ln">000003</span> <span class="command">// Guest Mode Engaged //</span><br>
+      <span class="ln">000004</span> <br>
+      <span class="ln">000005</span> <span class="keyword">>> System Info:</span><br>
+      <span class="ln">000006</span> Platform: <span style="color: #ff8383">Windows 10/11 (64-bit)</span><br>
+      <span class="ln">000007</span> Version: <span style="color: #eeb7eb">v1.0-beta</span><br>
+      <span class="ln">000008</span> Creator: <span class="string">heavylildude (Chris)</span><br>
+      <span class="ln">000009</span> Status: <span class="command">Ready for Download</span><br>
+      <span class="ln">000010</span> <br>
+      <span class="ln">000011</span> <span class="keyword">>> Quick Download:</span><br>
+      <span class="ln">000012</span> <a href="https://github.com/sudotwm/cyberdeck/releases/download/cyberdeck/win-v.1.0-beta.zip" class="download-btn">⬇ DOWNLOAD MAGNUS CYBERDECK (win-v.1.0-beta.zip)</a><br>
+      <span class="ln">000013</span> <br>
+      <span class="ln">000014</span> <span class="keyword">>> Available Commands:</span><br>
+      <span class="ln">000015</span> Type <span class="command" onclick="document.getElementById('usrinp').value='features';clckcmd('features');">'<u>features</u>'</span> to see what Magnus can do<br>
+      <span class="ln">000016</span> Type <span class="command" onclick="document.getElementById('usrinp').value='setup';clckcmd('setup');">'<u>setup</u>'</span> for installation instructions<br>
+      <span class="ln">000017</span> Type <span class="command" onclick="document.getElementById('usrinp').value='help';clckcmd('help');">'<u>help</u>'</span> to see all available commands<br>
+    </section>
+    <div class="prompt">
+      <span class="title">guest<span style="color: white">@magnus:</span> ~$</span> <input autocomplete="off" id="usrinp"/>
+    </div>
+    <span class="info">Left-click/tap on the screen to re-focus on text input.<br>Type <span class="command" style="font: inherit; color: inherit; text-shadow: none;" onclick="document.getElementById('usrinp').value='help';clckcmd('help');">'<u style="font: inherit; text-shadow: none;">help</u>'</span> to see list of available commands<br>or <span class="command" style="font: inherit; color: inherit; text-shadow: none;" onclick="clckcmd('reboot');">'<u style="font: inherit; text-shadow: none;">reboot</u>'</span> to restart terminal.</span><br><br><br><br><br><br><br>
+  </main>
+  <div class="hidden" id="promptClone">
+    <span class="title">guest<span style="color: white">@magnus:</span> ~$</span> <span class="promtCloneInput"></span><br><span class="info">Left-click/tap on the screen to re-focus on text input.</span>
+    <div class="promtCloneContent"></div>
+  </div>
+
+  <div class="hidden" id="help">
+    <div class="sectionTitle">Available Commands:</div>
+    <div class="common">
+      <div>
+        <span class="command">features</span>:
+        <div class="common">See all Magnus Cyberdeck features</div> 
+      </div>
+      <div>
+        <span class="command">setup</span>:
+        <div class="common">Installation and setup guide</div> 
+      </div>
+      <div>
+        <span class="command">download</span>:
+        <div class="common">Get the download link</div> 
+      </div>
+      <div>
+        <span class="command">requirements</span>:
+        <div class="common">System requirements</div> 
+      </div>
+      <div>
+        <span class="command">about</span>:
+        <div class="common">About Magnus Cyberdeck</div> 
+      </div>
+      <div>
+        <span class="command">contact</span>:
+        <div class="common">Contact information</div> 
+      </div>
+      <div>
+        <span class="command">clear</span>:
+        <div class="common">Clear terminal history</div> 
+      </div>
+      <div>
+        <span class="command">reboot</span>:
+        <div class="common">Restart terminal</div> 
+      </div>
+    </div>
+  </div>
+
+  <div class="hidden" id="features">
+    <div class="sectionTitle">Magnus Cyberdeck Features:</div>
+    <div class="common">
+      <span class="title">🤖 Multi-Backend AI</span>
+      <div class="common">
+        Support for Google Gemini, Groq, Mistral AI, and Ollama (local).<br>
+        Choose your preferred AI provider or run completely offline with Ollama.
+      </div><br>
+    </div>
+    <div class="common">
+      <span class="title">📝 Code Editor with Dracula Theme</span>
+      <div class="common">
+        Syntax highlighting for all major languages<br>
+        Smart indentation guides and powerful editing features<br>
+        Built with CodeMirror for professional-grade editing
+      </div><br>
+    </div>
+    <div class="common">
+      <span class="title">📁 File Management</span>
+      <div class="common">
+        Navigate projects with terminal-style file explorer<br>
+        Open folders, edit files, and manage your workspace<br>
+        Seamless integration with your local file system
+      </div><br>
+    </div>
+    <div class="common">
+      <span class="title">🌐 Browser Automation</span>
+      <div class="common">
+        Automate web tasks directly from the editor<br>
+        Navigate sites, fill forms, and extract data<br>
+        AI-powered automation workflow
+      </div><br>
+    </div>
+    <div class="common">
+      <span class="title">📄 Document Generation & Viewing</span>
+      <div class="common">
+        F.R.I.E.N.D. system for professional document creation<br>
+        View PDFs, DOCX, and XLSX files with built-in previews<br>
+        Export and manage documentation seamlessly
+      </div><br>
+    </div>
+    <div class="common">
+      <span class="title">🔍 Context Management</span>
+      <div class="common">
+        Smart memory system tracks your project context<br>
+        Tag files and folders for AI-aware assistance<br>
+        Persistent workspace across sessions
+      </div><br>
+    </div>
+  </div>
+
+  <div class="hidden" id="setup">
+    <div class="sectionTitle">Setup Guide (3 Easy Steps):</div>
+    <div class="common">
+      <span class="title">Step 1: Download & Extract</span>
+      <div class="common">
+        <span class="command">1.</span> Download: <a href="https://github.com/sudotwm/cyberdeck/releases/download/cyberdeck/win-v.1.0-beta.zip" class="download-btn">win-v.1.0-beta.zip</a><br>
+        <span class="command">2.</span> Extract to any folder (e.g., C:\Magnus or D:\Apps\Magnus)<br>
+        <span class="command">3.</span> You should see <span style="color: #FFA500">Magnus Cyberdeck.exe</span> inside
+      </div><br>
+    </div>
+    <div class="common">
+      <span class="title">Step 2: Configure API Key</span>
+      <div class="common">
+        <span class="command">1.</span> Open the <span style="color: #FFA500">.env</span> file with Notepad<br>
+        <span class="command">2.</span> Choose your AI backend (see 'requirements' for API key links)<br>
+        <span class="command">3.</span> Remove the <span style="color: #ff8383">#</span> from your chosen line<br>
+        <span class="command">4.</span> Add your API key<br>
+        <span class="command">5.</span> Save the file<br><br>
+        Example for Gemini:<br>
+        <span style="color: #68ff99">GEMINI_API_KEY=</span><span style="color: #FFA500">AIzaSyC_your_actual_key_here</span><br>
+        <span style="color: #68ff99">GEMINI_MODEL=</span><span style="color: #FFA500">gemini-2.0-flash-exp</span>
+      </div><br>
+    </div>
+    <div class="common">
+      <span class="title">Step 3: Launch Magnus</span>
+      <div class="common">
+        <span class="command">1.</span> Double-click <span style="color: #FFA500">Magnus Cyberdeck.exe</span><br>
+        <span class="command">2.</span> Wait a few seconds for the window to open<br>
+        <span class="command">3.</span> Start hacking! 🎉
+      </div><br>
+    </div>
+    <div class="common" style="color: #68ff99; text-align: center; padding-top: 10px;">
+      ⚡ NO NODE.JS OR PYTHON REQUIRED ⚡
+    </div>
+  </div>
+
+  <div class="hidden" id="requirements">
+    <div class="sectionTitle">System Requirements:</div>
+    <div class="common">
+      <span class="title">Operating System</span>
+      <div class="common">Windows 10 or 11 (64-bit)</div><br>
+    </div>
+    <div class="common">
+      <span class="title">Required Software</span>
+      <div class="common">
+        <span style="color: #68ff99">✓</span> None! Everything is bundled<br>
+        <span style="color: #ff8383">✗</span> No Node.js required<br>
+        <span style="color: #ff8383">✗</span> No Python required
+      </div><br>
+    </div>
+    <div class="common">
+      <span class="title">AI Backend Options (Choose ONE)</span>
+      <div class="common">
+        <span class="command">Option 1: Google Gemini (Recommended)</span><br>
+        • Free tier: 15 requests/min, 1500 requests/day<br>
+        • Get API key: <a href="https://aistudio.google.com/apikey" target="_blank" class="download-btn">https://aistudio.google.com/apikey</a><br><br>
+
+        <span class="command">Option 2: Groq (Fast & Free)</span><br>
+        • Free tier: 30 requests/min, very generous limits<br>
+        • Get API key: <a href="https://console.groq.com/" target="_blank" class="download-btn">https://console.groq.com/</a><br><br>
+
+        <span class="command">Option 3: Mistral AI</span><br>
+        • Privacy-focused, European servers<br>
+        • Get API key: <a href="https://console.mistral.ai/" target="_blank" class="download-btn">https://console.mistral.ai/</a><br><br>
+
+        <span class="command">Option 4: Ollama (100% Local)</span><br>
+        • Completely private, no internet required<br>
+        • Download: <a href="https://ollama.com/download" target="_blank" class="download-btn">https://ollama.com/download</a><br>
+        • Run: <span style="color: #FFA500">ollama pull llama3.2</span>
+      </div><br>
+    </div>
+    <div class="common">
+      <span class="title">Recommended</span>
+      <div class="common">
+        8GB RAM minimum<br>
+        Modern processor (Intel i5/AMD Ryzen 5 or better)<br>
+        5 minutes of your time
+      </div>
+    </div>
+  </div>
+
+  <div class="hidden" id="about">
+    <div class="sectionTitle">About Magnus Cyberdeck</div>
+    <div class="common">
+      Magnus Cyberdeck is an AI-powered code editor with a sleek terminal aesthetic,<br>
+      designed for developers who want cutting-edge AI assistance without the bloat.<br><br>
+
+      Built with a focus on:<br>
+      <span class="command">•</span> Multi-backend flexibility (Gemini, Groq, Mistral, Ollama)<br>
+      <span class="command">•</span> Professional code editing with Dracula theme<br>
+      <span class="command">•</span> Smart context management and memory<br>
+      <span class="command">•</span> Browser automation capabilities<br>
+      <span class="command">•</span> Document generation and viewing<br>
+      <span class="command">•</span> Zero-installation portability<br><br>
+
+      Created by <span style="color: #68ff99">heavylildude (Chris)</span><br>
+      Version: <span style="color: #eeb7eb">1.0.0-beta</span><br>
+      License: <span style="color: #FFA500">ISC</span>
+    </div>
+  </div>
+
+  <div class="hidden" id="download">
+    <div class="sectionTitle">Download Magnus Cyberdeck:</div>
+    <div class="common">
+      <span class="title">Latest Release: v1.0-beta</span><br>
+      <span class="command">Platform:</span> Windows 10/11 (64-bit)<br>
+      <span class="command">Size:</span> ~150MB (bundled with all dependencies)<br><br>
+
+      <a href="https://github.com/sudotwm/cyberdeck/releases/download/cyberdeck/win-v.1.0-beta.zip" class="download-btn" style="font-size: 16px;">
+        ⬇ DOWNLOAD NOW (win-v.1.0-beta.zip)
+      </a><br><br>
+
+      After downloading, check the <span class="command" onclick="document.getElementById('usrinp').value='setup';clckcmd('setup');"><u>setup</u></span> command for installation instructions.
+    </div>
+  </div>
+
+  <div class="hidden" id="contact">
+    <div class="sectionTitle">Contact Information:</div>
+    <div>
+      <span class="title">Creator:</span> <span class="command">heavylildude (Chris)</span>
+    </div>
+    <div>
+      <span class="title">Email:</span> <span class="command"><a href="mailto:heavylildude@gmail.com">heavylildude@gmail.com</a></span>
+    </div>
+    <div>
+      <span class="title">Work Email:</span> <span class="command"><a href="mailto:sudohld@proton.me">sudohld@proton.me</a></span>
+    </div>
+    <div>
+      <span class="title">Website:</span> <span class="command"><a href="https://heavylildu.de" target="_blank">heavylildu.de</a></span>
+    </div>
+  </div>
+
+</body>
+</html>
+<script>
+const usrinp = document.getElementById('usrinp');
+const terminal = document.getElementById('terminal');
+const cmdcont = document.getElementById('cmdcont');
+const date = document.getElementById('date');
+
+usrinp.focus();
+date.innerText = new Date().toDateString();
+window.addEventListener('click', () => {usrinp.focus();usrinp.scrollIntoView({block: 'start'});});
+usrinp.addEventListener('keydown', (event) => {
+  if (event.key === "Enter") {
+    if (usrinp.value !== '') {
+      typecmd(event);
+    } else {
+      usrinp.focus();usrinp.scrollIntoView({block: 'start'});
+    }
+  }
+});
+
+const typecmd = (event) => {
+  if (event) {  
+    const promtElement = document.getElementById('promptClone').cloneNode(true);
+    promtElement.classList.remove('hidden');
+    promtElement.getElementsByClassName('promtCloneInput')[0].innerHTML = event.target.value;
+    promtElement.setAttribute('id', null);
+    promtElement.getElementsByClassName('promtCloneContent')[0].appendChild(slctcmd(event.target.value));
+    terminal.appendChild(promtElement);
+    usrinp.value = '';
+  }
+};
+
+const clckcmd = (x) => {
+  const promtElement = document.getElementById('promptClone').cloneNode(true);
+  promtElement.classList.remove('hidden');
+  promtElement.getElementsByClassName('promtCloneInput')[0].innerHTML = x;
+  promtElement.setAttribute('id', null);
+  promtElement.getElementsByClassName('promtCloneContent')[0].appendChild(slctcmd(x));
+  terminal.appendChild(promtElement);
+  usrinp.value = '';
+};
+
+const slctcmd = (command) => {
+  const lwcmd = command.toLowerCase().trim();
+
+  switch (lwcmd) {
+    case "help":
+    case "features":
+    case "setup":
+    case "requirements":
+    case "about":
+    case "download":
+    case "contact":
+      return getcmd(lwcmd);
+    case "clear":
+    case "clean":
+      return clearall();
+    case "reboot":
+    case "reset":
+      return window.location.reload();
+    default:
+      return nillcmd(command);
+  }
+};
+
+const getcmd = (command) => {
+  const element = document.getElementById(command).cloneNode(true);
+  element.classList.remove('hidden');
+  element.setAttribute('id', null);
+  return element;
+};
+
+const clearall = () => {
+  terminal.innerHTML = '';
+  const element = document.createElement('span');
+  return element;
+};
+
+const nillcmd = (command) => {
+  const element = document.createElement('span');
+  element.innerText = `-bash: ${command}: command not found`;
+  element.classList.add('error');
+  return element;
+};
+</script>
