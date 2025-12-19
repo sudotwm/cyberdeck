@@ -18,7 +18,7 @@ Welcome to Magnus Cyberdeck! This guide will help you get started in just a few 
 
 ### Step 1: Extract the Files
 
-1. Extract the `win-v.1.0-beta.zip` to any folder you like
+1. Extract the `zipfile` to any folder you like
    - Example: `C:\Magnus` or `D:\Apps\Magnus`
 2. You should see a folder with `Magnus Cyberdeck.exe` inside
 
