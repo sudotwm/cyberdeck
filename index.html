@@ -110,7 +110,7 @@
   <main id="cmdcont">
     <section id="terminal">
       <div class="command"><span class="ln" style="font-weight: normal; color: white">******</span> <span class="error" id="date"></span></div>
-      <div class="title"><span class="ln" style="font-weight: normal; color: white">******</span> MAGNUS-SYS.(v1.0-beta) - Win64<br><span class="ln" style="font-weight: normal; color: white">******</span> <span class="string">00001 00404 Scroll ==> CSR</span></div><br>
+      <div class="title"><span class="ln" style="font-weight: normal; color: white">******</span> MAGNUS-SYS.(beta)<br><span class="ln" style="font-weight: normal; color: white">******</span> <span class="string">00001 00404 Scroll ==> CSR</span></div><br>
       <pre style="color: white;">
 ███╗   ███╗ █████╗  ██████╗ ███╗   ██╗██╗   ██╗███████╗
 ████╗ ████║██╔══██╗██╔════╝ ████╗  ██║██║   ██║██╔════╝
@@ -118,9 +118,8 @@
 ██║╚██╔╝██║██╔══██║██║   ██║██║╚██╗██║██║   ██║╚════██║
 ██║ ╚═╝ ██║██║  ██║╚██████╔╝██║ ╚████║╚██████╔╝███████║
 ╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝ ╚══════╝
-                 CYBERDECK v1.0-beta
       </pre><br>
-      <span class="ln">000001</span> <span class="keyword">>> AI-Powered Code Editor for Windows //</span><br>
+      <span class="ln">000001</span> <span class="keyword">>> AI-Powered Code Editor //</span><br>
       <span class="ln">000002</span> <span class="command">// System Online //</span><br>
       <span class="ln">000003</span> <span class="command">// Guest Mode Engaged //</span><br>
       <span class="ln">000004</span> <br>
@@ -132,13 +131,14 @@
       <span class="ln">000010</span> <br>
       <span class="ln">000011</span> <span class="keyword">>> Quick Download:</span><br>
       <span class="ln">000012</span> <a href="https://github.com/sudotwm/cyberdeck/releases/download/v.1.3-beta/win-v.1.3-beta.zip" class="download-btn">⬇ DOWNLOAD MAGNUS CYBERDECK (win-v.1.3-beta.zip)</a><br>
-      <span class="ln">000013</span> Added support for Cerebras API and NVIDIA NIM API<br>
+      <span class="ln">000013</span> <a href="https://github.com/sudotwm/cyberdeck/releases/download/sidekick/magnus-sidekick.zip" class="download-btn">⬇ DOWNLOAD MAGNUS SIDEKICK (magnus-sidekick.zip)</a><br>
       <span class="ln">000014</span> <br>
       <span class="ln">000015</span> <span class="keyword">>> Available Commands:</span><br>
-      <span class="ln">000016</span> Type <span class="command" onclick="document.getElementById('usrinp').value='requirements';clckcmd('features');">'<u>requirements</u>'</span> to use all features<br>
-      <span class="ln">000017</span> Type <span class="command" onclick="document.getElementById('usrinp').value='features';clckcmd('features');">'<u>features</u>'</span> to see what Magnus can do<br>
-      <span class="ln">000018</span> Type <span class="command" onclick="document.getElementById('usrinp').value='setup';clckcmd('setup');">'<u>setup</u>'</span> for installation instructions<br>
-      <span class="ln">000019</span> Type <span class="command" onclick="document.getElementById('usrinp').value='help';clckcmd('help');">'<u>help</u>'</span> to see all available commands<br>
+      <span class="ln">000016</span> Type <span class="command" onclick="document.getElementById('usrinp').value='requirements';clckcmd('requirements');">'<u>requirements</u>'</span> to use all features<br>
+      <span class="ln">000017</span> Type <span class="command" onclick="document.getElementById('usrinp').value='sidekick';clckcmd('sidekick');">'<u>sidekick</u>'</span> to setup browser extension<br>
+      <span class="ln">000018</span> Type <span class="command" onclick="document.getElementById('usrinp').value='features';clckcmd('features');">'<u>features</u>'</span> to see what Magnus can do<br>
+      <span class="ln">000019</span> Type <span class="command" onclick="document.getElementById('usrinp').value='setup';clckcmd('setup');">'<u>setup</u>'</span> for installation instructions<br>
+      <span class="ln">000020</span> Type <span class="command" onclick="document.getElementById('usrinp').value='help';clckcmd('help');">'<u>help</u>'</span> to see all available commands<br>
     </section>
     <div class="prompt">
       <span class="title">guest<span style="color: white">@magnus:</span> ~$</span> <input autocomplete="off" id="usrinp"/>
@@ -168,6 +168,10 @@
       <div>
         <span class="command">requirements</span>:
         <div class="common">System requirements</div> 
+      </div>
+      <div>
+        <span class="command">sidekick</span>:
+        <div class="common">Setup Magnus Sidekick browser extension</div> 
       </div>
       <div>
         <span class="command">about</span>:
@@ -396,6 +400,39 @@
     </div>
   </div>
 
+  <div class="hidden" id="sidekick">
+    <div class="sectionTitle">Magnus Sidekick - Browser Extension</div>
+    <div class="common">
+      <span style="color: #68ff99">A simple bridge to connect your browser to Magnus Cyberdeck.</span><br><br>
+      
+      <span class="title">What it does:</span><br>
+      <span class="command">•</span> Sends active tab content to Magnus (automatically added as context in chat)<br>
+      <span class="command">•</span> Real-time page monitoring<br>
+      <span class="command">•</span> Seamless integration with Cyberdeck chat<br><br>
+
+      <span class="title">Installation (5 Steps):</span><br>
+      <div class="common">
+        <span class="command">1.</span> Extract the sidekick zip to your home directory (e.g., ~/magnus-sidekick/)<br>
+        <span class="command">2.</span> Open Chrome/Firefox/Edge and enable <span style="color: #FFA500">Developer Mode</span><br>
+        <span class="command">3.</span> Click <span style="color: #FFA500">[Load Unpacked]</span><br>
+        <span class="command">4.</span> Navigate to <span style="color: #FFA500">~/magnus-sidekick/extension</span> and open it<br>
+        <span class="command">5.</span> Pin the Sidekick icon for easy access<br>
+      </div><br>
+
+      <span class="title">How to Use:</span><br>
+      <div class="common">
+        <span class="command">1.</span> Navigate to any webpage you want to analyze<br>
+        <span class="command">2.</span> Click the Sidekick icon to toggle <span style="color: #68ff99">ON</span> (icon lights up)<br>
+        <span class="command">3.</span> Check Cyberdeck toolbar - you'll see the page referenced<br>
+        <span class="command">4.</span> Chat with Maggie about the page content<br>
+        <span class="command">5.</span> Toggle <span style="color: #ff8383">OFF</span> to stop streaming<br>
+      </div><br>
+
+      <span style="color: #eeb7eb">🔥 Pro tip:</span> Keep Sidekick active while browsing docs or tutorials,<br>
+      then ask Magnus to explain or debug without copy-pasting!
+    </div>
+  </div>
+
 </body>
 </html>
 <script>
@@ -450,6 +487,7 @@ const slctcmd = (command) => {
     case "about":
     case "download":
     case "contact":
+    case "sidekick":
       return getcmd(lwcmd);
     case "clear":
     case "clean":
