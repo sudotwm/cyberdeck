@@ -113,14 +113,31 @@
     <section id="terminal">
       <div class="command"><span class="ln" style="font-weight: normal; color: white">******</span> <span class="error" id="date"></span></div>
       <div class="title"><span class="ln" style="font-weight: normal; color: white">******</span> MAGNUS-SYS.(beta)<br><span class="ln" style="font-weight: normal; color: white">******</span> <span class="string">00001 00404 Scroll ==> CSR</span></div><br>
-      <pre style="color: #dae87e;">
+<style>
+  @keyframes cyber-pulse {
+    0% { opacity: 1; text-shadow: 0 0 2px #dae87e; }
+    50% { opacity: 0.8; text-shadow: 0 0 10px #dae87e, 0 0 15px #68ff99; }
+    98% { opacity: 0.8; transform: skew(0deg); }
+    99% { opacity: 0.5; transform: skew(2deg); } /* The Glitch */
+    100% { opacity: 1; text-shadow: 0 0 2px #dae87e; transform: skew(0deg); }
+  }
+
+  .magnus-logo {
+    color: #dae87e;
+    animation: cyber-pulse 3s infinite; /* Loops forever */
+    /* Optional: Keep it old school */
+    filter: contrast(1.2) brightness(1.1); 
+  }
+</style>
+
+<pre class="magnus-logo">
 ███╗   ███╗ █████╗  ██████╗ ███╗   ██╗██╗   ██╗███████╗
 ████╗ ████║██╔══██╗██╔════╝ ████╗  ██║██║   ██║██╔════╝
 ██╔████╔██║███████║██║  ███╗██╔██╗ ██║██║   ██║███████╗
 ██║╚██╔╝██║██╔══██║██║   ██║██║╚██╗██║██║   ██║╚════██║
 ██║ ╚═╝ ██║██║  ██║╚██████╔╝██║ ╚████║╚██████╔╝███████║
 ╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝ ╚══════╝
-      </pre><br>
+</pre><br>
       <span class="ln">000001</span> <span class="keyword">>> A cyberdeck to Interact with M.A.G.N.U.S //</span><br>
       <span class="ln">000002</span> <span class="command">// System Online //</span><br>
       <span class="ln">000003</span> <span class="command">// Guest Mode Engaged //</span><br>
